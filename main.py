@@ -2,7 +2,10 @@ import pygame
 from pygame import *
 import sys
 import time
+import pygame.font
+import requests
 
+a = requests.get('http://www.randomnumberapi.com/api/v1.0/random?min=0&max=100&count=1')
 
 
 pygame.init()
@@ -253,6 +256,7 @@ def predistorija():
         screen.fill(WHITE)
         draw_text("Whats happening?", pygame.font.Font('FreeSans.ttf', 48), (0, 0, 0), screen, 200, 100)
         draw_text("School was attacked by terrorists, but they left for pizza in Rimi, you have 30 minutes to escape from school!", pygame.font.Font('FreeSans.ttf', 24), (0, 0, 0), screen, 70, 300)
+        draw_text("Your unique game ID = " + str(a.json()[0]), pygame.font.Font('Freesans.ttf', 24), (0, 0, 0), screen, 70, 600)
         draw_text("Note: CLICK on everthing you thing may help you to escape, hints, paths to escape and more!", pygame.font.Font('FreeSans.ttf', 24), (0, 0, 0), screen, 70, 450)
         draw_text(str(i // 4), pygame.font.Font('FreeSans.ttf', 24), (0, 0, 0), screen, 400, 600)
         pygame.display.flip()
